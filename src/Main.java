@@ -13,7 +13,11 @@ public class Main {
             String inputString = in.nextLine();
             if (inputString.equals("exit")) break;
             System.out.println("output:");
-            System.out.println(calculator.calc(inputString));
+            try {
+                System.out.println(calculator.calc(inputString));
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
 
         in.close();
