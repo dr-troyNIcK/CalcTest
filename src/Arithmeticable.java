@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public interface Arithmeticable {
-    Map<String, Arithmeticable> ARITHMETIC_OPERATION = new HashMap<String, Arithmeticable>() {
+    Map<String, Arithmeticable> ARITHMETIC_OPERATION = new HashMap<>() {
         {
             put("+", new Plus());
             put("-", new Minus());

@@ -34,6 +34,6 @@ public class Calculator {
             throw new Exception("Exception: invalid numbers format");
         }
 
-        return result.toString();
+        return result.getName();
     }
 }

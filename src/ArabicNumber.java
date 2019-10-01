@@ -18,8 +18,4 @@ public class ArabicNumber implements Numerable {
         return value;
     }
 
-    @Override
-    public String toString() {
-        return name;
-    }
 }

@@ -1,7 +1,7 @@
 public class Minus implements Arithmeticable {
 
     @Override
-    public int execute(Numerable numOne, Numerable numTwo) throws Exception {
+    public int execute(Numerable numOne, Numerable numTwo) {
         return numOne.getValue() - numTwo.getValue();
     }
 }
