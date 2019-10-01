@@ -11,5 +11,5 @@ public interface Arithmeticable {
         }
     };
 
-    Numerable execute(Numerable numOne, Numerable numTwo) throws Exception;
+    int execute(Numerable numOne, Numerable numTwo) throws Exception;
 }

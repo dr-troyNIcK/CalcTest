@@ -24,6 +24,7 @@ public class RomanNumber implements Numerable {
     }
 
     private String convert(int i) {
-        return "N";
+//        TODO: write converter from arabic to rome
+        return Integer.toString(i);
     }
 }

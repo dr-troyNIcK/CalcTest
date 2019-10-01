@@ -8,39 +8,32 @@ public class Calculator {
 
     public String calc(String inputString) throws Exception {
         List<String> parsedStringList = Arrays.asList(inputString.split(" "));
+        Arithmeticable arithmeticOperation;
         Numerable numOne;
         Numerable numTwo;
-        Arithmeticable arithmeticOperation;
+        Numerable result;
 
         if (parsedStringList.size() != 3)
             throw new Exception("Exception: invalid input format");
 
-        if (validInputArabicNumbers.contains(parsedStringList.get(0))) {
-            numOne = new ArabicNumber(validInputArabicNumbers.indexOf(parsedStringList.get(0)));
-        } else if (validInputRomanNumbers.contains(parsedStringList.get(0))) {
-            numOne = new RomanNumber(validInputRomanNumbers.indexOf(parsedStringList.get(0)));
-        } else {
-            throw new Exception("Exception: invalid first number format");
-        }
-
-        if (validInputArabicNumbers.contains(parsedStringList.get(2))) {
-            numTwo = new ArabicNumber(validInputArabicNumbers.indexOf(parsedStringList.get(2)));
-        } else if (validInputRomanNumbers.contains(parsedStringList.get(2))) {
-            numTwo = new RomanNumber(validInputRomanNumbers.indexOf(parsedStringList.get(2)));
-        } else {
-            throw new Exception("Exception: invalid second number format");
-        }
-
-        if (Arithmeticable.ARITHMETIC_OPERATION.keySet().contains(parsedStringList.get(1))) {
+        if (Arithmeticable.ARITHMETIC_OPERATION.containsKey(parsedStringList.get(1))) {
             arithmeticOperation = Arithmeticable.ARITHMETIC_OPERATION.get(parsedStringList.get(1));
         } else {
             throw new Exception("Exception: invalid arithmetic symbol format");
         }
 
-        if (!numOne.getClass().getName().equals(numTwo.getClass().getName())) {
-            throw new Exception("Exception: different numbers types");
+        if (validInputArabicNumbers.contains(parsedStringList.get(0)) && validInputArabicNumbers.contains(parsedStringList.get(2))) {
+            numOne = new ArabicNumber(validInputArabicNumbers.indexOf(parsedStringList.get(0)));
+            numTwo = new ArabicNumber(validInputArabicNumbers.indexOf(parsedStringList.get(2)));
+            result = new ArabicNumber(arithmeticOperation.execute(numOne, numTwo));
+        } else if (validInputRomanNumbers.contains(parsedStringList.get(0)) && validInputRomanNumbers.contains(parsedStringList.get(2))) {
+            numOne = new RomanNumber(validInputRomanNumbers.indexOf(parsedStringList.get(0)));
+            numTwo = new RomanNumber(validInputRomanNumbers.indexOf(parsedStringList.get(2)));
+            result = new RomanNumber(arithmeticOperation.execute(numOne, numTwo));
+        } else {
+            throw new Exception("Exception: invalid numbers format");
         }
 
-        return arithmeticOperation != null ? arithmeticOperation.execute(numOne, numTwo).toString() : null;
+        return result.toString();
     }
 }
