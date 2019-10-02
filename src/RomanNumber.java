@@ -48,7 +48,10 @@ public class RomanNumber implements Numerable {
     private String convert(int i) {
         StringBuilder result = new StringBuilder();
         if (i == 0) return "NULL";
-        if (i < 0) result.append("-");
+        if (i < 0) {
+            result.append("-");
+            i = -i;
+        }
         if (i / 100 > 0) result.append(romanFigures.get(i / 100 * 100));
         i = i % 100;
         if (i / 10 > 0) result.append(romanFigures.get(i / 10 * 10));
